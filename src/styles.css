@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --medium-blue: #0077ff;
+}
+
+body {
+    background-color: dimgray;
+}
+.homebutton {
+    background: none;
+    color: var(--medium-blue);
+    text-shadow: 2px 2px 0 #000;
+
+    border: 0;
+    font-size: 30px;
+  }
+.homebutton:hover {
+    color: black;
+    text-shadow: 2px 2px 0 var(--medium-blue);
+}
+.card {
+    background: white;
+    box-shadow: 5px 5px 5px 5px rgb(22, 22, 32);
+}
+
+.card img {
+    max-width: 290px;
+    max-height: 200px;
+    overflow: hidden;
+    object-fit: contain;
+    border-radius: 20px;
+}
+.details .name {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: auto;
+}
+.details .price {
+    margin: 0;
+    align-self: flex-start;
+}
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+.flex {
+    display: flex;
+}
