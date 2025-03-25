@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Product } from '../models/product.model';
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  url = "http://localhost:8080"
+  url = environment.apiUrl;
 
   constructor() { }
 
