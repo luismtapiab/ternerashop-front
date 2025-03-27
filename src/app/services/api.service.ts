@@ -15,14 +15,10 @@ export class ApiService {
     let status = false;
     await fetch(`${this.url}/health/`)
       .then((response) => {
-        if(response.ok)
-            console.log("ok");
-        else
-            console.log("not ok");
         status = response.ok;
       })
       .catch((error) => {
-        console.log("error");
+        console.log("error:",error);
         status = false;
       })
     return status;
