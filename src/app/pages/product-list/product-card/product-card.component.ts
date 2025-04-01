@@ -1,9 +1,9 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
-import { Product } from '../../models/product.model';
-import { PrimaryButtonComponent } from "../../components/primary-button/primary-button.component";
-import { CartService } from '../../services/cart.service';
-import { decimal2 } from '../../../utils';
-import { environment } from '../../../environments/environment';
+import { Product } from '../../../models/product.model';
+import { PrimaryButtonComponent } from "../../../components/primary-button/primary-button.component";
+import { CartService } from '../../../services/cart.service';
+import { decimal2 } from '../../../../utils';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-product-card',
@@ -54,13 +54,6 @@ import { environment } from '../../../environments/environment';
     font-weight: bold;
     padding: .5em 0.2em;
     border-radius: 1em;
-  }
-  .text-green {
-    background: rgba(0, 255, 0, 0.7);
-  }
-
-  .text-red {
-    background: rgba(255,0,0,.7);
   }
   `
 })

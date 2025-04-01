@@ -1,18 +1,18 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Product } from '../../models/product.model';
-import { ProductCardComponent } from "../product-card/product-card.component";
+import { ProductCardComponent } from "./product-card/product-card.component";
 import { ApiService } from '../../services/api.service';
 import { Group } from '../../models/group.model';
-import { CardComponent } from '../../components/card/card.component';
+import { OfferComponent } from './offer/offer.component';
 
 @Component({
   selector: 'app-product-list',
-  imports: [ProductCardComponent, CardComponent],
+  imports: [ProductCardComponent, OfferComponent],
   template: `
     <h2>Ofertas activas</h2>
     <div class="products-container">
         @for(group of groups(); track group.id) {
-          <app-card [product]="group.product" />
+          <app-offer [group]="group" />
         }
     </div>
     <h2>Nuestros Productos</h2>
