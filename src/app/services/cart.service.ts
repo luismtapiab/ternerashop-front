@@ -1,13 +1,15 @@
 import { Injectable, signal } from '@angular/core';
 import { Product } from '../models/product.model';
 import {toast} from 'ngx-sonner'
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  show: Boolean;
   cart = signal<Product[]>([]);
-
+  
   addToCart(product: Product) {
     if(product.stock){
         this.cart.set([...this.cart(), product])
@@ -24,5 +26,7 @@ export class CartService {
     }
   }
 
-  constructor() { }
+  constructor() { 
+    this.show = environment.showCart;
+  }
 }

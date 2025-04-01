@@ -4,6 +4,7 @@ import { CartService } from '../../services/cart.service';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { toast } from 'ngx-sonner';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -15,11 +16,15 @@ import { toast } from 'ngx-sonner';
         <strong> LOADING </strong>
       }
      
-      
-      <app-primary-button 
-        [label]="'Cart ('+ cartService.cart().length +')'" 
-        routerLink="/cart"
-      />
+      @if (cartService.show) {
+        <app-primary-button 
+            [label]="'Cart ('+ cartService.cart().length +')'" 
+            routerLink="/cart"
+        />
+        <button (click)="cartService.show=false;" >Exit</button>
+      } @else {
+        <button (click)="cartService.show=true;" >Login</button>
+      }
     </div>
 
       @if (isAlive()===this.api.APISTATUS.DOWN) {
@@ -44,7 +49,7 @@ import { toast } from 'ngx-sonner';
   `
 })
 export class HeaderComponent {
- 
+    
     cartService = inject(CartService);
     api = inject(ApiService);
     isAlive = signal(this.api.APISTATUS.UNKNOWN);

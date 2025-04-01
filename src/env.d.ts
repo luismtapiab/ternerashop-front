@@ -1,5 +1,6 @@
 // Define the type of the environment variables.
 declare interface Env {
+  readonly NG_APP_CART: boolean;
   readonly NODE_ENV: string;
   // Custom variables
   readonly NG_APP_ENV: string;

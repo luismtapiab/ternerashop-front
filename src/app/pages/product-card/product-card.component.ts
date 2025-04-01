@@ -1,8 +1,9 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { PrimaryButtonComponent } from "../../components/primary-button/primary-button.component";
 import { CartService } from '../../services/cart.service';
 import { decimal2 } from '../../../utils';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-product-card',
@@ -14,7 +15,11 @@ import { decimal2 } from '../../../utils';
         <p class="name">{{product().name}}</p>
         <p class="price">{{priceString()}} Bs</p>
     </div>
-    <app-primary-button label="Add to Cart" (btnClicked)="cartService.addToCart(product())"/>
+    
+    @if (cartService.show) {
+        <app-primary-button label="Add to Cart" (btnClicked)="cartService.addToCart(product())"/>
+    }
+    
     <span class="stock" 
        [class]="product().stock ? 'text-green' : 'text-red'"> 
         @if (product().stock) {
@@ -26,6 +31,7 @@ import { decimal2 } from '../../../utils';
   styles: `
   .card {
     background-color: white;
+    min-width: 130px;
     border-radius: 30px;
     padding: 6px;
     display: flex;
@@ -42,10 +48,11 @@ import { decimal2 } from '../../../utils';
   .stock {
     align-self: flex-end;
     position: absolute;
-    margin-right: 20px;
+    margin-right: 16px;
+    
     text-align: right;
     font-weight: bold;
-    padding: .5em;
+    padding: .5em 0.2em;
     border-radius: 1em;
   }
   .text-green {
@@ -58,7 +65,6 @@ import { decimal2 } from '../../../utils';
   `
 })
 export class ProductCardComponent {
-  
   cartService = inject(CartService)
   product = input.required<Product>()
   priceString = computed(()=>decimal2(this.product().price))
