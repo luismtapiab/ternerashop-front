@@ -4,7 +4,7 @@ import { Component, input, output } from '@angular/core';
   selector: 'app-button',
   imports: [],
   template: `
-    <button (click)="btnClicked.emit()">
+    <button (click)="click($event)">
         {{ label() }}
     </button>
   `,
@@ -21,6 +21,11 @@ import { Component, input, output } from '@angular/core';
   }`
 })
 export class ButtonComponent {
-    label = input('')
+    label = input('');
     btnClicked = output();
+
+    click(e:Event){
+        e.stopPropagation();
+        this.btnClicked.emit();
+    }
 }
