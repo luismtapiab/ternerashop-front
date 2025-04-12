@@ -3,6 +3,7 @@ import { Injectable, signal } from '@angular/core';
 import { Product } from '../models/product.model';
 import { environment } from '../../environments/environment'
 import { Group } from '../models/group.model';
+import { group } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -33,13 +34,6 @@ export class ApiService {
     return [...this.beers, ...await data.json() ?? []];
   }
 
-  async getGroups() : Promise<Group[]> {
-    return new Promise((resolve, _ ) => {
-        setTimeout(() => {
-          resolve(this.groupsActive);
-        }, 100);
-      });
-  }
 
   APISTATUS = {
     UNKNOWN: "",
@@ -55,14 +49,31 @@ export class ApiService {
       "name": "Paceña",
       "image": "https://www.cerveza-pacena.com/sites/g/files/wnfebl10741/files/styles/webp/public/Pace%C3%B1a/Home/620.png.webp?itok=Dqx-UQMi",
       "price": 2250,
-      "stock": 100
+      "stock": 100,
+      "group": {
+            id: 1,
+            purchaseGoal: 10,
+            participants: 6,
+            isActive: true,
+            createdAt: "2025-03-25",
+            endsAt: "2025-03-31T12:00:00Z"
+        }
     },
     {
       "id": 1002,
       "name": "Huari",
       "image": "https://amarket.com.bo/cdn/shop/files/7772106009043_669x669.jpg?v=1740750646",
       "price": 2300,
-      "stock": 80
+      "stock": 80,
+      group: {
+            id: 2,
+            purchaseGoal: 15,
+            participants: 12,
+            isActive: true,
+            createdAt: "2025-03-25",
+            endsAt: "2025-03-31T12:00:00Z"
+        }
+
     },
     {
       "id": 1003,
@@ -79,38 +90,4 @@ export class ApiService {
       "stock": 60
     }
   ]
-  
-
-  groupsActive:Group[] = [ {
-        id: 1,
-        purchaseGoal: 10,
-        participants: 6,
-        product: {
-            "id": 1001,
-            "name": "Paceña",
-            "image": "https://www.cerveza-pacena.com/sites/g/files/wnfebl10741/files/styles/webp/public/Pace%C3%B1a/Home/620.png.webp?itok=Dqx-UQMi",
-            "price": 2250,
-            "stock": 100
-        },
-        isActive: true,
-        createdAt: "2025-03-25",
-        endsAt: "2025-03-31T12:00:00Z"
-    },{
-        id: 2,
-        purchaseGoal: 15,
-        participants: 12,
-        product: {
-            id: 1002,
-            name: "Huari",
-            image: "https://amarket.com.bo/cdn/shop/files/7772106009043_669x669.jpg?v=1740750646",
-            price: 2300,
-            stock: 80
-        },
-        isActive: true,
-        createdAt: "2025-03-25",
-        endsAt: "2025-03-31T12:00:00Z"
-    }
-
-  ]
-  
 }

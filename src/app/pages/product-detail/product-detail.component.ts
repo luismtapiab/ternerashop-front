@@ -27,6 +27,7 @@ import { PrimaryButtonComponent } from "../../components/primary-button/primary-
         <div>
             <h2>{{product.name}}</h2>
             <p class="price">{{priceString()}} Bs</p>
+            <p class="text-orange">Esperando a {{product.group.participants }} </p>
             <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos velit totam, nobis ut et fugiat excepturi deleniti commodi assumenda quod voluptates, facere quas, doloribus praesentium quia unde obcaecati quo illo.
             </p>
         </div>    
