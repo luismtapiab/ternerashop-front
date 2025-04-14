@@ -27,7 +27,10 @@ import { RouterLink } from '@angular/router';
         </div>
         
         @if (cartService.show) {
-            <app-primary-button label="Add to Cart" (btnClicked)="cartService.addToCart(product())"/>
+            <app-primary-button label="Add to Cart" 
+              (btnClicked)="cartService.addToCart(product())"
+              [stop]="true"
+            />
         }
         
         <span class="stock" 

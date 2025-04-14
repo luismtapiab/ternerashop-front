@@ -4,7 +4,7 @@ import { Component, input, output } from '@angular/core';
   selector: 'app-primary-button',
   imports: [],
   template: `
-    <button (click)="btnClicked.emit()">
+    <button (click)="click($event)">
         {{ label() }}
     </button>
   `,
@@ -23,6 +23,11 @@ import { Component, input, output } from '@angular/core';
 })
 export class PrimaryButtonComponent {
     label = input('');
-
+    stop = input(false);
     btnClicked = output();
+
+    click = (event:Event) => {
+        if(this.stop()) event.stopPropagation();
+        this.btnClicked.emit();
+    }
 }

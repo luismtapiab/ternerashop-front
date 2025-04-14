@@ -13,6 +13,9 @@ import { ApiService } from './services/api.service';
       position="top-center" richColors
       [expand]="true"
       visibleToasts="3"  
+      closeButton="close"
+      duration="5000"
+      offset="100px" 
     />
     <app-header/>
     <router-outlet />
