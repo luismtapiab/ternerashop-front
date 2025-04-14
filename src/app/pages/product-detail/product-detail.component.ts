@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { decimal2 } from '../../../utils';
 import { CartService } from '../../services/cart.service';
 import { PrimaryButtonComponent } from "../../components/primary-button/primary-button.component";
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,21 +14,22 @@ import { PrimaryButtonComponent } from "../../components/primary-button/primary-
             <img src={{product.image}} />
         
         @if (cartService.show) {
-            <app-primary-button label="Add to Cart" 
+            <app-primary-button label="Añadir al carro" 
             (btnClicked)="this.cartService.addToCart(this.product)"/>
         }
         
         <span class="stock" 
              [class]="product.stock ? 'text-green' : 'text-red'"> 
             @if (product.stock) {
-                {{product.stock}} left
-            } @else { Out of <br> stock }
+                Quedan {{product.stock}}
+            } @else { Agotado }
         </span>
         </div>
         <div>
             <h2>{{product.name}}</h2>
             <p class="price">{{priceString()}} Bs</p>
-            <p class="text-orange">Esperando a {{product.group.participants }} </p>
+            <!-- TODO: chage participants to the needed -->
+            @if(product.group){<p class="text-orange">Esperando a {{product.group.participants }} </p>}
             <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos velit totam, nobis ut et fugiat excepturi deleniti commodi assumenda quod voluptates, facere quas, doloribus praesentium quia unde obcaecati quo illo.
             </p>
         </div>    
@@ -58,7 +60,7 @@ import { PrimaryButtonComponent } from "../../components/primary-button/primary-
 export class ProductDetailComponent {
     cartService = inject(CartService)
     router = inject(Router)
-    product = this.router.getCurrentNavigation()?.extras.state?.['justProduct']; 
+    product:Product = this.router.getCurrentNavigation()?.extras.state?.['justProduct']; 
     priceString = computed(()=>decimal2(this.product.price))
 
 }

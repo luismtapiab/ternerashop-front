@@ -13,22 +13,22 @@ import { environment } from '../../../environments/environment';
     <div class="header">
       <button class='homebutton' routerLink="/" >TerneraShop</button>
       @if (isAlive()===this.api.APISTATUS.LOADING) {
-        <strong> LOADING </strong>
+        <strong> CARGANDO </strong>
       }
      
       @if (cartService.show) {
         <app-primary-button 
-            [label]="'Cart ('+ cartService.cart().length +')'" 
+            [label]="'Carro ('+ cartService.cart().length +')'" 
             routerLink="/cart"
         />
-        <button (click)="cartService.show=false;" >Exit</button>
+        <button (click)="cartService.show=false;" >Cerrar Sesión</button>
       } @else {
-        <button (click)="cartService.show=true;" >Login</button>
+        <button (click)="cartService.show=true;" >Iniciar Sesión</button>
       }
     </div>
 
       @if (isAlive()===this.api.APISTATUS.DOWN) {
-        <h3> CATALOG CANT BE LOADED, SORRY </h3>
+        <h3> CATALOGO NO DISPONIBLE :( </h3>
       }
   `,
   styles: `
@@ -59,7 +59,7 @@ export class HeaderComponent {
         
         if(alive === null || alive === false) {
             this.isAlive.set( this.api.APISTATUS.DOWN);
-            toast.error("Error connecting with server");
+            toast.error("Error al conectar con el servidor");
         }
         else {
             this.isAlive.set( this.api.APISTATUS.ALIVE);           

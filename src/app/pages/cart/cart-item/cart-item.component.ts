@@ -16,7 +16,7 @@ import { decimal2 } from '../../../../utils';
                 <p class="price">{{priceString()}}</p>
     
             </div>
-            <app-button label="Remove" (btnClicked)="cartService.remove(item())"/>
+            <app-button label="remover" (btnClicked)="cartService.remove(item())"/>
                 
         </li>
   `,

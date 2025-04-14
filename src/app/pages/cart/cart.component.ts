@@ -8,11 +8,11 @@ import { RouterLink } from '@angular/router';
   selector: 'app-cart',
   imports: [CartItemComponent, OrderSummaryComponent, RouterLink],
   template: `
-  <h2 class="title">Shopping Cart</h2>
+  <h2 class="title">Carro de compra</h2>
   <ul class="productsCart">
   @if(cartService.cart().length == 0){
-    <p class="noitems"> There aren't items here yet <br> 
-    <button class="homebutton" routerLink="/"> continue shopping</button></p>
+    <p class="noitems"> No hay productos seleccionados aún <br> 
+    <button class="homebutton" routerLink="/"> continuar búsqueda</button></p>
   } 
   @else {
     @for(item of cartService.cart(); track item.id) {

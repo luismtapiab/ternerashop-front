@@ -15,7 +15,7 @@ export class CartService {
         this.cart.set([...this.cart(), product])
     }
     else{
-       toast.warning("This item is out of storage")
+       toast.warning("Este producto esta agotado")
     }
   }
 

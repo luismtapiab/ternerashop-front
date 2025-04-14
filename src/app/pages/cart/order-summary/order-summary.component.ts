@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
         
         <div> 
         <p class=text2>Total: <strong>{{total()}} $</strong></p>
-        <app-primary-button  label="Proceed to checkout" routerLink="/pay"/>
+        @if(total() != "0") {<app-primary-button  label="Continuar compra" routerLink="/pay"/>}
         </div>
     </div>
   `,

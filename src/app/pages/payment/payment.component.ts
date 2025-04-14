@@ -8,8 +8,8 @@ import { PrimaryButtonComponent } from "../../components/primary-button/primary-
   selector: 'app-payment',
   imports: [OrderSummaryComponent, CartItemComponent, PrimaryButtonComponent],
   template: `
-    <h2 class="title">Payment</h2>
-    <div class="left">
+    
+    <div class="right">
     <ul class="productsCart">
   
     @for(item of cartService.cart(); track item.id) {
@@ -19,18 +19,18 @@ import { PrimaryButtonComponent } from "../../components/primary-button/primary-
     </ul>
     <app-order-summary />
     </div>
-    <div class="right">
+    <div class="left">
       <form>
-        <h3>Payment details</h3><br>
+        <h2>Detalles del pago</h2>
         <fieldset>
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname" value="John"><br>
+        <label for="fname">Nombres:</label>
+        <input type="text" id="fname" name="fname" value="Carlos"><br>
         
-        <label for="lname">Last name:</label>
-        <input type="text" id="lname" name="lname" value="Doe"><br><br>
+        <label for="lname">Appellidos:</label>
+        <input type="text" id="lname" name="lname" value="Duty"><br><br>
         </fieldset>
         
-        <app-primary-button label="Pay"/>
+        
       </form> 
     </div>
   `,

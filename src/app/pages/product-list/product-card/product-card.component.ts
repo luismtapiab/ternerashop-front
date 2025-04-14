@@ -27,7 +27,7 @@ import { RouterLink } from '@angular/router';
         </div>
         
         @if (cartService.show) {
-            <app-primary-button label="Add to Cart" 
+            <app-primary-button label="Añadir al carro" 
               (btnClicked)="cartService.addToCart(product())"
               [stop]="true"
             />
@@ -36,8 +36,8 @@ import { RouterLink } from '@angular/router';
         <span class="stock" 
              [class]="product().stock ? 'text-green' : 'text-red'"> 
             @if (product().stock) {
-                {{product().stock}} left
-            } @else { Out of <br> stock }
+               Quedan {{product().stock}} 
+            } @else { Agotado }
         </span>
         @if(product().group){
             <!-- TODO: Use current time and update counter every second -->
